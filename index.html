@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Skincare Routine Builder</title>
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <link rel="stylesheet" href="skincare-style.css">
+    <script src="https://unpkg.com"></script>
+</head>
+<body class="text-gray-800 font-sans h-screen overflow-hidden flex flex-col" style="background: linear-gradient(135deg, #fff0f5 0%, #ffffff 100%);">
+        <header class="text-center pt-4 pb-2 flex-shrink-0">
+          <div class="inline-flex items-center justify-center bg-white w-20 h-20 rounded-full shadow-md mb-2 border border-pink-100/40 p-2 overflow-hidden">
+            <img src="image_60505a12.jpg" alt="GlowNo-Go Logo" class="w-full h-full object-contain scale-150">
+          </div>
+          <h1 class="text-3xl font-black tracking-tight mb-1">
+            <span class="text-slate-800">Glow</span><span class="text-pink-400 font-medium">No-Go</span>
+          </h1>
+          <div class="w-16 h-1 bg-gradient-to-r from-slate-800 to-pink-400 mx-auto rounded-full"></div>
+        </header>
+
+    <main class="max-w-4xl w-full mx-auto px-6 pb-4 flex-1 flex flex-col overflow-hidden">
+        <!-- Product Selector Card (Reduced Margin Bottom) -->
+        <section class="bg-white/80 backdrop-blur-md p-4 rounded-xl shadow-md border border-white/60 mb-4 flex-shrink-0">
+            <div class="flex items-center gap-2 mb-3 border-b border-neutral-100 pb-2">
+                <i data-lucide="plus-circle" class="w-4 h-4 text-slate-700"></i>
+                <h2 class="text-sm font-bold text-slate-700">Add a Vanity Item</h2>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-3">
+                <div class="flex-1">
+                    <select id="product-select" class="w-full p-2 bg-neutral-50/50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300 transition text-sm">
+                        <option value="">-- Select Active Ingredient --</option>
+                        <option value="retinol">Retinol Serum (Anti-aging)</option>
+                        <option value="vitamin-c">Vitamin C Serum (Brightening)</option>
+                        <option value="aha-toner">AHA Toner (Exfoliating - e.g., Glycolic Acid)</option>
+                        <option value="salicylic">BHA / Salicylic Acid (Acne Clearing)</option>
+                        <option value="niacinamide">Niacinamide (Barrier Support / Pore Control)</option>
+                        <option value="azelaic">Azelaic Acid (Redness / Brightening)</option>
+                        <option value="peptides">Peptides (Hydrating / Firming)</option>
+                        <option value="hyaluronic">Hyaluronic Acid (Hydrating)</option>
+                    </select>
+                </div>
+                
+                <div class="w-full md:w-36">
+                    <select id="time-select" class="w-full p-2 bg-neutral-50/50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300 transition text-sm">
+                        <option value="am">☀️ AM (Morning)</option>
+                        <option value="pm">🌙 PM (Night)</option>
+                    </select>
+                </div>
+
+                <button id="add-btn" class="bg-slate-800 hover:bg-slate-900 text-white font-semibold py-2 px-5 rounded-lg transition shadow-sm active:scale-98 flex items-center justify-center gap-2 text-sm flex-shrink-0">
+                    Add to Board
+                </button>
+            </div>
+        </section>
+
+        <!-- Alert Banner Layout Container -->
+        <div id="alert-box" class="hidden mb-4 p-3 bg-rose-50 border border-rose-200 text-rose-700 rounded-xl flex items-center gap-2 text-sm flex-shrink-0"></div>
+
+        <!-- Dynamic Grid View Boards (Flex-1 allows columns to fill remaining height) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1 overflow-hidden min-h-0 mb-4">
+            <!-- AM View Board Card (With internal scroll for items) -->
+                        <!-- AM View Board Card (Contrast White/Amber) -->
+            <div class="bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-sm border border-amber-200/80 flex flex-col overflow-hidden">
+                <div class="flex items-center gap-2 border-b border-amber-200 pb-2 mb-3 flex-shrink-0">
+                    <i data-lucide="sun" class="w-4 h-4 text-amber-500"></i>
+                    <h3 class="text-sm font-bold text-amber-900">Morning Steps</h3>
+                </div>
+                <ul id="am-list" class="space-y-2 overflow-y-auto pr-1 flex-1"></ul>
+            </div>
+
+            <!-- PM View Board Card (With internal scroll for items) -->
+            <div class="bg-indigo-50/80 backdrop-blur-sm p-4 rounded-xl shadow-sm border border-indigo-200/70 flex flex-col overflow-hidden">
+                <div class="flex items-center gap-2 border-b border-indigo-100 pb-2 mb-3 flex-shrink-0">
+                    <i data-lucide="moon" class="w-4 h-4 text-indigo-500"></i>
+                    <h3 class="text-sm font-bold text-indigo-900">Night Steps</h3>
+                </div>
+                <ul id="pm-list" class="space-y-2 overflow-y-auto pr-1 flex-1"></ul>
+            </div>
+        </div>
+
+        <!-- Reset App Interface Button Container (Reduced Margin) -->
+        <div class="text-center mt-1 mb-2 flex-shrink-0">
+            <button id="clear-btn" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400 hover:text-rose-500 transition-colors focus:outline-none">
+                Clear Entire Board
+            </button>
+        </div>
+    </main>
+
+    <script src="skincare-app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
